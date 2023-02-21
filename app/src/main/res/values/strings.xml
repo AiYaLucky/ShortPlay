@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ShortPlay</string>
+    <string name="copyright">© 2023 ShortPlay, Inc. 保留所有权利。</string>
+    <string name="textLogin">登 录</string>
+    <string name="textPassword">密 码</string>
+    <string name="textAccount">用户名</string>
+</resources>
