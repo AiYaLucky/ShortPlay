@@ -3,6 +3,9 @@ package com.aiyalucky.shortplay.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.view.Window;
 
 import com.aiyalucky.shortplay.R;
 
