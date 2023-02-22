@@ -5,4 +5,11 @@
     <string name="textPassword">密 码</string>
     <string name="textAccount">用户名</string>
     <string name="remember_password">记住密码</string>
+    <string name="homePage">主 页</string>
+    <string name="shortPlay">剧 集</string>
+    <string name="friends">好 友</string>
+    <string name="mine">我</string>
+    <string name="concern">关注</string>
+    <string name="follow">推荐</string>
+    <string name="recommend">关注</string>
 </resources>

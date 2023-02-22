@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private CheckBox rememberPassword;
 
-    private SharedPreferences userSP = getSharedPreferences("user",MODE_PRIVATE);
+    private SharedPreferences userSP;
 
     @SuppressLint("ResourceType")
     @Override
@@ -39,20 +39,22 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setContentView(R.layout.activity_login);
+        userSP = getSharedPreferences("user", MODE_PRIVATE);
         // 初始化 Retrofit
         retrofit = new Retrofit.Builder()
-//                .baseUrl("http://192.168.2.165:8080/")
-                .baseUrl("http://192.168.3.218:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+                .baseUrl("http://192.168.2.165:8080/")
+//                .baseUrl("http://192.168.3.218:8080/")
+                .addConverterFactory(GsonConverterFactory.create()).build();
 
         accountEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         rememberPassword = findViewById(R.id.remember_password);
         loginButton = findViewById(R.id.loginButton);
 
-       //记住密码的话，设置一下账号密码
-        if (rememberPassword.isChecked()){
-            accountEditText.setText(userSP.getString("account",""));
-            passwordEditText.setText(userSP.getString("password",""));
+        //记住密码的话，设置一下账号密码
+        if (rememberPassword.isChecked()) {
+            accountEditText.setText(userSP.getString("account", ""));
+            passwordEditText.setText(userSP.getString("password", ""));
         }
 
         //设置登录按钮监听
@@ -68,10 +70,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String account, String password) {
-        if (this.rememberPassword.isChecked()){
-            SharedPreferences.Editor userEditor = getSharedPreferences("user",MODE_PRIVATE).edit();
-            userEditor.putString("account",account);
-            userEditor.putString("password",password);
+        if (this.rememberPassword.isChecked()) {
+            SharedPreferences.Editor userEditor = getSharedPreferences("user", MODE_PRIVATE).edit();
+            userEditor.putString("account", account);
+            userEditor.putString("password", password);
             userEditor.apply();
         }
         // 创建登录服务实例
@@ -96,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (loginResponse.isSuccessLogin()) {
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         saveLoginInfo(loginResponse);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

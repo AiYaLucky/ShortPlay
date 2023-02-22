@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!--    顶部左搜索侧按钮-->
+    <Button
+            android:id="@+id/rightButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/search_icon"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+    <!--顶部布局-->
+    <RelativeLayout
+            android:id="@+id/topLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true">
+        <!--主页菜单-->
+        <Button
+                android:id="@+id/followButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:text="@string/follow"
+                android:onClick="onMenu1Clicked" />
+
+        <!--剧集菜单-->
+        <Button
+                android:id="@+id/recommendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"
+                android:text="@string/recommend"
+                android:layout_toEndOf="@id/followButton"
+                android:onClick="onMenu2Clicked" />
+    </RelativeLayout>
+
+</RelativeLayout>
