@@ -1,13 +1,12 @@
 package com.aiyalucky.shortplay.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import com.aiyalucky.shortplay.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.aiyalucky.shortplay.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,17 +14,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this,LoginActivity.class);
 
-        Timer timer = new Timer();
+        // 定义启动 LoginActivity 的 Intent
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                startActivity(intent);
-                timer.cancel();
-            }
-        };
-        timer.schedule(timerTask,3000,0);
+        // 设置淡入淡出动画效果
+        ActivityOptions options = ActivityOptions.makeCustomAnimation(MainActivity.this, android.R.anim.fade_in, android.R.anim.fade_out);
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                // 启动 LoginActivity
+//                startActivity(intent, options.toBundle());
+//                // 结束当前 Activity
+//                finish();
+//            }
+//        },3000);
+
+        startActivity(intent, options.toBundle());
+
+
     }
 }

@@ -4,4 +4,5 @@
     <string name="textLogin">登 录</string>
     <string name="textPassword">密 码</string>
     <string name="textAccount">用户名</string>
+    <string name="remember_password">记住密码</string>
 </resources>
