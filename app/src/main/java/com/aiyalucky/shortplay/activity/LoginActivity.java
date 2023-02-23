@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aiyalucky.shortplay.R;
@@ -31,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private CheckBox rememberPassword;
 
-    private SharedPreferences userSP;
+    private SharedPreferences userSP ;
+
+    private SharedPreferences.Editor userEditor;
 
     @SuppressLint("ResourceType")
     @Override
@@ -40,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setContentView(R.layout.activity_login);
         userSP = getSharedPreferences("user", MODE_PRIVATE);
+        userEditor = getSharedPreferences("user", MODE_PRIVATE).edit();
         // 初始化 Retrofit
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.2.165:8080/")
+        retrofit = new Retrofit.Builder().baseUrl("http://192.168.2.165:8080/")
 //                .baseUrl("http://192.168.3.218:8080/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -52,32 +56,50 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
 
         //记住密码的话，设置一下账号密码
-        if (rememberPassword.isChecked()) {
+        if (userSP.getBoolean("rememberPassword", false)) {
             accountEditText.setText(userSP.getString("account", ""));
             passwordEditText.setText(userSP.getString("password", ""));
+            rememberPassword.setChecked(true);
         }
 
         //设置登录按钮监听
-        loginButton.setOnClickListener(v -> {
-            String username = accountEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(LoginActivity.this, "请输入用户名和密码", Toast.LENGTH_SHORT).show();
-                return;
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = accountEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                if (username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "请输入用户名和密码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                login(username, password);
             }
-            login(username, password);
+        });
+
+        //设置记住密码的勾选点击监听
+        rememberPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //取消勾选的时候，清空密码
+                if (!rememberPassword.isChecked()) {
+                    passwordEditText.setText("");
+                    userEditor.putBoolean("rememberPassword", false);
+                }
+            }
         });
     }
 
     private void login(String account, String password) {
-        if (this.rememberPassword.isChecked()) {
-            SharedPreferences.Editor userEditor = getSharedPreferences("user", MODE_PRIVATE).edit();
+        if (rememberPassword.isChecked()) {
             userEditor.putString("account", account);
             userEditor.putString("password", password);
+            userEditor.putBoolean("rememberPassword", true);
             userEditor.apply();
         }
+
         // 创建登录服务实例
         UserService loginService = retrofit.create(UserService.class);
+
         // 发送登录请求
         User user = new User();
         user.setAccount(account);
@@ -85,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         Call<ServerResponse> call = loginService.login(user);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+            public void onResponse(@NonNull Call<ServerResponse> call, @NonNull Response<ServerResponse> response) {
                 if (response.isSuccessful()) {
                     // 服务器成功通信返回
                     ServerResponse loginResponse = response.body();
@@ -109,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<ServerResponse> call, @NonNull Throwable t) {
                 // 网络错误
                 Toast.makeText(LoginActivity.this, "网络错误：" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
