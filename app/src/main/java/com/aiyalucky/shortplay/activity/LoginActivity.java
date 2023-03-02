@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences userSP ;
 
-    private SharedPreferences.Editor userEditor;
+    private SharedPreferences.Editor userSpEditor;
 
     @SuppressLint("ResourceType")
     @Override
@@ -44,10 +44,11 @@ public class LoginActivity extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setContentView(R.layout.activity_login);
         userSP = getSharedPreferences("user", MODE_PRIVATE);
-        userEditor = getSharedPreferences("user", MODE_PRIVATE).edit();
+        userSpEditor = getSharedPreferences("user", MODE_PRIVATE).edit();
         // 初始化 Retrofit
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.2.165:8080/")
-//                .baseUrl("http://192.168.3.218:8080/")
+        retrofit = new Retrofit.Builder()
+//                .baseUrl("http://192.168.2.165:8080/")
+                .baseUrl("http://192.168.3.218:8080/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         accountEditText = findViewById(R.id.usernameEditText);
@@ -83,18 +84,23 @@ public class LoginActivity extends AppCompatActivity {
                 //取消勾选的时候，清空密码
                 if (!rememberPassword.isChecked()) {
                     passwordEditText.setText("");
-                    userEditor.putBoolean("rememberPassword", false);
+                    userSpEditor.putBoolean("rememberPassword", false);
                 }
             }
         });
     }
 
+    /**
+     * 登录具体逻辑
+     * @param account
+     * @param password
+     */
     private void login(String account, String password) {
         if (rememberPassword.isChecked()) {
-            userEditor.putString("account", account);
-            userEditor.putString("password", password);
-            userEditor.putBoolean("rememberPassword", true);
-            userEditor.apply();
+            userSpEditor.putString("account", account);
+            userSpEditor.putString("password", password);
+            userSpEditor.putBoolean("rememberPassword", true);
+            userSpEditor.apply();
         }
 
         // 创建登录服务实例
@@ -145,12 +151,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private void saveLoginInfo(ServerResponse loginResponse) {
         // TODO: 保存登录信息到 SharedPreferences 或数据库中
-        Object user = loginResponse.getData().get("user");
+        Object userObj = loginResponse.getData().get("user");
 
+        //本地化用户信息
         Gson gson = new Gson();
-        User user1 = gson.fromJson(gson.toJson(user), User.class);
-        SharedPreferences.Editor edit = userSP.edit();
-        //todo 这里做所有的数据本地化
+        User user = gson.fromJson(gson.toJson(userObj), User.class);
+        user.userSaveSp(userSpEditor);
+
+
+        //本地化推荐视频资源，初始默认加载3条url到本地
+
+        //本地化主页展示的信息
+
     }
+
+
 }
 

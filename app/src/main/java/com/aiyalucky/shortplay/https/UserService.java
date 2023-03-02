@@ -13,4 +13,8 @@ public interface UserService {
     @POST("user/login")
     // 定义登录请求的方法，请求参数为 User 对象，返回值为 Call<ResponseBody>
     Call<ServerResponse> login(@Body User user);
+
+    @POST("user/register")
+        // 定义注册请求的方法，请求参数为 User 对象，返回值为 Call<ResponseBody>
+    Call<ServerResponse> register(@Body User user);
 }

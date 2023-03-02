@@ -28,6 +28,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     private List<ItemData> itemList;
 
 
+
     public ItemAdapter(Context context, List<ItemData> itemList) {
         this.context = context;
         this.itemList = itemList;
@@ -47,8 +48,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         Glide.with(context)
                 .load(item.getImageRes())
                 .into(holder.imageView);
-//        holder.imageView.setImageResource(item.getImageRes());
         holder.textView.setText(item.getText());
+        holder.myItem = item;
     }
 
     @Override
@@ -60,12 +61,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         public ImageView imageView;
         public TextView textView;
+        public ItemData myItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer videoId = myItem.getVideoId();
+                    System.out.println(videoId);
+                }
+            });
         }
     }
 }

@@ -25,6 +25,11 @@ public class ShortPlayFragment extends Fragment {
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
 
+    /**
+     * 主页面的视频数据
+     */
+    private List<String> imageList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.short_play_fragment, container, false);
@@ -54,6 +59,7 @@ public class ShortPlayFragment extends Fragment {
                 ItemData item = new ItemData();
                 item.setImageRes(getRandomImageResId());
                 item.setText("说明： " + (j + 1));
+                item.setVideoId(j + 1);
                 itemList.add(item);
             }
             data.setItems(itemList);
@@ -61,6 +67,8 @@ public class ShortPlayFragment extends Fragment {
         }
         return dataList;
     }
+
+
 
     private String getRandomImageResId() {
         List<String> imageList = new ArrayList<>();

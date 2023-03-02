@@ -10,6 +10,8 @@ public class ItemData {
     private String imageRes;
     private String text;
 
+    private Integer videoId;
+
     public ItemData() {
     }
 
@@ -32,5 +34,13 @@ public class ItemData {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Integer getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(Integer videoId) {
+        this.videoId = videoId;
     }
 }

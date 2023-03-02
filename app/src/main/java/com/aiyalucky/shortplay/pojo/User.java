@@ -1,5 +1,7 @@
 package com.aiyalucky.shortplay.pojo;
 
+import android.content.SharedPreferences;
+
 /**
  * @Author: xu xiao wei
  * @Date: 2023/2/19 15:32
@@ -15,6 +17,31 @@ public class User {
     private String birthday;
     private String address;
     private String phone;
+
+    public User(String uid, String username, String account, String password, String email, String birthday, String address, String phone) {
+        this.uid = uid;
+        this.username = username;
+        this.account = account;
+        this.password = password;
+        this.email = email;
+        this.birthday = birthday;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public User() {
+    }
+
+    public void userSaveSp(SharedPreferences.Editor userSP){
+        userSP.putString("uid",this.uid);
+        userSP.putString("username",this.username);
+        userSP.putString("account",this.account);
+        userSP.putString("password",this.password);
+        userSP.putString("email",this.email);
+        userSP.putString("birthday",this.birthday);
+        userSP.putString("address",this.address);
+        userSP.putString("phone",this.phone);
+    }
 
     public String getUid() {
         return uid;
