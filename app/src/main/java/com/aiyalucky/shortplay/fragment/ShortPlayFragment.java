@@ -1,5 +1,7 @@
 package com.aiyalucky.shortplay.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +16,13 @@ import com.aiyalucky.shortplay.R;
 import com.aiyalucky.shortplay.adapter.CategoryAdapter;
 import com.aiyalucky.shortplay.pojo.ItemData;
 import com.aiyalucky.shortplay.pojo.MyData;
+import com.aiyalucky.shortplay.pojo.VideoData;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 public class ShortPlayFragment extends Fragment {
 
@@ -25,10 +30,13 @@ public class ShortPlayFragment extends Fragment {
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
 
+
     /**
      * 主页面的视频数据
      */
-    private List<String> imageList;
+    private static List<VideoData> imageList = new ArrayList<>();
+    private SharedPreferences videoSP;
+    private SharedPreferences.Editor videoSpEditor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +44,9 @@ public class ShortPlayFragment extends Fragment {
 
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         recyclerView = view.findViewById(R.id.recyclerView);
+        videoSP = getActivity().getSharedPreferences("video", Context.MODE_PRIVATE);
+        videoSpEditor = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE).edit();
+        videoDataToList();
         adapter = new CategoryAdapter(getContext(), createData());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
@@ -55,11 +66,12 @@ public class ShortPlayFragment extends Fragment {
             MyData data = new MyData();
             data.setTitle("类别 " + (i + 1));
             List<ItemData> itemList = new ArrayList<>();
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < imageList.size(); j++) {
                 ItemData item = new ItemData();
-                item.setImageRes(getRandomImageResId());
-                item.setText("说明： " + (j + 1));
-                item.setVideoId(j + 1);
+                VideoData videoData = imageList.get(j);
+                item.setImageRes(videoData.getImgurl());
+                item.setText(videoData.getDesc());
+                item.setVideoId(videoData.getVideoid());
                 itemList.add(item);
             }
             data.setItems(itemList);
@@ -69,23 +81,17 @@ public class ShortPlayFragment extends Fragment {
     }
 
 
+    private List<VideoData> videoDataToList() {
+        Map<String, ?> videoSPAll = videoSP.getAll();
+        for (Map.Entry<String, ?> entry : videoSPAll.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            // do something with key and value
+            VideoData videoData = new Gson().fromJson(value.toString(), VideoData.class);
+            imageList.add(videoData);
+        }
+        Collections.sort(imageList);
+        return imageList;
 
-    private String getRandomImageResId() {
-        List<String> imageList = new ArrayList<>();
-        imageList.add("https://img1.baidu.com/it/u=953680778,1162160249&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2720349980,3743060535&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2028618468,66183889&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img0.baidu.com/it/u=2137593542,2407782906&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img0.baidu.com/it/u=1851170573,2768937094&fm=253&fmt=auto&app=138&f=JPG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2028618468,66183889&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=953680778,1162160249&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2720349980,3743060535&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2028618468,66183889&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=953680778,1162160249&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        imageList.add("https://img1.baidu.com/it/u=2720349980,3743060535&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200");
-        Random random = new Random();
-        int index = random.nextInt(imageList.size());
-
-        return imageList.get(index);
     }
 }
