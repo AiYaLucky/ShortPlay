@@ -15,6 +15,6 @@ public interface VideoService {
 
     @POST("video/getList")
     // 随机请求条目数据
-    Call<List<VideoData>> getList(@Body String params);
+    Call<List<VideoData>> getList(@Body Integer params);
 
 }

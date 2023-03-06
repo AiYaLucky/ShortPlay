@@ -42,6 +42,11 @@ public class VideoData implements Serializable,Comparable<VideoData> {
      */
     private Integer epnum;
 
+    /**
+     * 视频分类文本
+     */
+    private String type;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -142,6 +147,14 @@ public class VideoData implements Serializable,Comparable<VideoData> {
         this.epnum = epnum;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -160,7 +173,8 @@ public class VideoData implements Serializable,Comparable<VideoData> {
             && (this.getDesc() == null ? other.getDesc() == null : this.getDesc().equals(other.getDesc()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getVideoid() == null ? other.getVideoid() == null : this.getVideoid().equals(other.getVideoid()))
-            && (this.getEpnum() == null ? other.getEpnum() == null : this.getEpnum().equals(other.getEpnum()));
+            && (this.getEpnum() == null ? other.getEpnum() == null : this.getEpnum().equals(other.getEpnum()))
+            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()));
     }
 
     @Override
@@ -174,6 +188,7 @@ public class VideoData implements Serializable,Comparable<VideoData> {
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getVideoid() == null) ? 0 : getVideoid().hashCode());
         result = prime * result + ((getEpnum() == null) ? 0 : getEpnum().hashCode());
+        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         return result;
     }
 
@@ -190,6 +205,7 @@ public class VideoData implements Serializable,Comparable<VideoData> {
         sb.append(", name=").append(name);
         sb.append(", videoid=").append(videoid);
         sb.append(", epnum=").append(epnum);
+        sb.append(", type=").append(type);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

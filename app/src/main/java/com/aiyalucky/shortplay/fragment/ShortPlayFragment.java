@@ -14,15 +14,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aiyalucky.shortplay.R;
 import com.aiyalucky.shortplay.adapter.CategoryAdapter;
+import com.aiyalucky.shortplay.https.DataUtils;
 import com.aiyalucky.shortplay.pojo.ItemData;
 import com.aiyalucky.shortplay.pojo.MyData;
 import com.aiyalucky.shortplay.pojo.VideoData;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class ShortPlayFragment extends Fragment {
 
@@ -38,6 +38,11 @@ public class ShortPlayFragment extends Fragment {
     private SharedPreferences videoSP;
     private SharedPreferences.Editor videoSpEditor;
 
+    /**
+     * 分类有几种，默认三个
+     */
+    private static Set<String> category;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.short_play_fragment, container, false);
@@ -46,13 +51,12 @@ public class ShortPlayFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         videoSP = getActivity().getSharedPreferences("video", Context.MODE_PRIVATE);
         videoSpEditor = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE).edit();
-        videoDataToList();
-        adapter = new CategoryAdapter(getContext(), createData());
+        adapter = new CategoryAdapter(getContext(), createData(false));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            adapter.setData(createData());
+            adapter.setData(createData(true));
             adapter.notifyDataSetChanged();
             swipeRefreshLayout.setRefreshing(false);
         });
@@ -60,15 +64,31 @@ public class ShortPlayFragment extends Fragment {
         return view;
     }
 
-    private ArrayList<MyData> createData() {
+    /**
+     * 数据更新
+     *
+     * @param refresh 是否需要从服务器重新获取数据
+     * @return
+     */
+    private ArrayList<MyData> createData(boolean refresh) {
+
+        //从服务器更新数据
+        if (refresh) {
+            DataUtils.videoDataRefresh(18);
+        }
+
         ArrayList<MyData> dataList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+
+        for (String categoryName : category) {
             MyData data = new MyData();
-            data.setTitle("类别 " + (i + 1));
+            data.setTitle(categoryName);
             List<ItemData> itemList = new ArrayList<>();
             for (int j = 0; j < imageList.size(); j++) {
                 ItemData item = new ItemData();
                 VideoData videoData = imageList.get(j);
+                if (!videoData.getType().equals(categoryName)) {
+                    continue;
+                }
                 item.setImageRes(videoData.getImgurl());
                 item.setText(videoData.getDesc());
                 item.setVideoId(videoData.getVideoid());
@@ -80,18 +100,16 @@ public class ShortPlayFragment extends Fragment {
         return dataList;
     }
 
-
-    private List<VideoData> videoDataToList() {
-        Map<String, ?> videoSPAll = videoSP.getAll();
-        for (Map.Entry<String, ?> entry : videoSPAll.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            // do something with key and value
-            VideoData videoData = new Gson().fromJson(value.toString(), VideoData.class);
-            imageList.add(videoData);
+    public void initVideoData(List<VideoData> videoDataList) {
+        imageList = videoDataList;
+        category = new HashSet<>();
+        //更新分类数据
+        for (VideoData videoData : imageList) {
+            category.add(videoData.getType());
         }
-        Collections.sort(imageList);
-        return imageList;
+    }
 
+    public static List<VideoData> getImageList() {
+        return imageList;
     }
 }

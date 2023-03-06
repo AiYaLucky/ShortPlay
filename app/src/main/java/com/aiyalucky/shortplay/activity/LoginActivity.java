@@ -14,15 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aiyalucky.shortplay.R;
+import com.aiyalucky.shortplay.https.DataUtils;
 import com.aiyalucky.shortplay.https.HttpUtils;
 import com.aiyalucky.shortplay.https.Response.ServerResponse;
 import com.aiyalucky.shortplay.https.UserService;
-import com.aiyalucky.shortplay.https.VideoService;
 import com.aiyalucky.shortplay.pojo.User;
-import com.aiyalucky.shortplay.pojo.VideoData;
 import com.google.gson.Gson;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -145,30 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // 创建获取视频数据实例
-        VideoService videoService = HttpUtils.getInstance().getRetrofit().create(VideoService.class);
-        Call<List<VideoData>> list = videoService.getList("3");
-        list.enqueue(new Callback<List<VideoData>>() {
-            @Override
-            public void onResponse(Call<List<VideoData>> call, Response<List<VideoData>> response) {
-                if (response.isSuccessful()) {
-                    // 服务器成功通信返回
-                    List<VideoData> videoDataList = response.body();
-                    if (videoDataList != null) {
-                        for (int i = 0; i < videoDataList.size(); i++) {
-                            VideoData videoData = videoDataList.get(i);
-                            String videoDataJson = new Gson().toJson(videoData);
-                            videoSpEditor.putString(videoDataList.get(i).getVideoid().toString(),videoDataJson);
-                        }
-                        videoSpEditor.apply();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<VideoData>> call, Throwable t) {
-            }
-        });
+        DataUtils.videoDataRefresh(12);
     }
 
     @Override

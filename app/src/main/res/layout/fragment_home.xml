@@ -4,7 +4,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <!--    顶部左搜索侧按钮-->
+    <!--顶部左搜索侧按钮-->
     <Button
             android:id="@+id/rightButton"
             android:layout_width="48dp"
@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             android:layout_centerInParent="true"
             android:layout_alignParentTop="true">
-        <!--主页菜单-->
+        <!--推荐按钮-->
         <Button
                 android:id="@+id/followButton"
                 android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:text="@string/follow"
                 android:onClick="onMenu1Clicked" />
 
-        <!--剧集菜单-->
+        <!--关注按钮-->
         <Button
                 android:id="@+id/recommendButton"
                 android:layout_width="wrap_content"
@@ -47,5 +47,20 @@
                 android:layout_toEndOf="@id/followButton"
                 android:onClick="onMenu2Clicked" />
     </RelativeLayout>
+
+    <!--视频播放控件-->
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/video_player"
+            android:layout_below="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!--视频列表-->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/video_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topLayout"
+            android:layout_above="@+id/video_player"/>
 
 </RelativeLayout>
