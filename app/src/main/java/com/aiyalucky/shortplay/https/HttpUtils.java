@@ -12,8 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpUtils {
     private static HttpUtils instance;
     private final Retrofit retrofit;
-//    private final static String baseUrl = "http://192.168.2.165:8080/";
-    private final static String baseUrl = "http://192.168.3.218:8080/";
+    private final static String baseUrl = "http://192.168.2.165:8080/";
+//    private final static String baseUrl = "http://192.168.3.218:8080/";
 
     private HttpUtils() {
         retrofit = new Retrofit.Builder().baseUrl(baseUrl)
