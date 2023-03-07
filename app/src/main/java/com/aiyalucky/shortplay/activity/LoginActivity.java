@@ -142,7 +142,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        DataUtils.videoDataRefresh(12);
+        DataUtils.videoDataRefresh(12,null);
+        DataUtils.initHomeVideo(3);
     }
 
     @Override

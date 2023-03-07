@@ -15,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.aiyalucky.shortplay.R;
 import com.aiyalucky.shortplay.adapter.CategoryAdapter;
 import com.aiyalucky.shortplay.https.DataUtils;
+import com.aiyalucky.shortplay.https.VideoDataCallback;
 import com.aiyalucky.shortplay.pojo.ItemData;
 import com.aiyalucky.shortplay.pojo.MyData;
 import com.aiyalucky.shortplay.pojo.VideoData;
@@ -74,7 +75,12 @@ public class ShortPlayFragment extends Fragment {
 
         //从服务器更新数据
         if (refresh) {
-            DataUtils.videoDataRefresh(18);
+            DataUtils.videoDataRefresh(18, new VideoDataCallback() {
+                @Override
+                public void onVideoDataReceived(List<VideoData> videoDataList) {
+                    initVideoData(videoDataList);
+                }
+            });
         }
 
         ArrayList<MyData> dataList = new ArrayList<>();

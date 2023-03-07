@@ -1,5 +1,6 @@
 package com.aiyalucky.shortplay.https;
 
+import com.aiyalucky.shortplay.fragment.HomeFragment;
 import com.aiyalucky.shortplay.fragment.ShortPlayFragment;
 import com.aiyalucky.shortplay.pojo.VideoData;
 
@@ -21,7 +22,32 @@ public class DataUtils {
      * 从服务器获取视频数据
      * @param num 获取的条数
      */
-    public static void videoDataRefresh(int num){
+    public static void videoDataRefresh(int num,final VideoDataCallback callback){
+        // 创建获取视频数据实例
+        VideoService videoService = HttpUtils.getInstance().getRetrofit().create(VideoService.class);
+        Call<List<VideoData>> list = videoService.getList(num);
+
+        list.enqueue(new Callback<List<VideoData>>() {
+            @Override
+            public void onResponse(Call<List<VideoData>> call, Response<List<VideoData>> response) {
+                if (response.isSuccessful()) {
+                    // 服务器成功通信返回,初始化主页视频数据
+                    List<VideoData> videoDataList = response.body();
+                    if (callback != null){
+                        callback.onVideoDataReceived(videoDataList);
+                    }else{
+                        new ShortPlayFragment().initVideoData(videoDataList);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<VideoData>> call, Throwable t) {
+            }
+        });
+    }
+
+    public static void initHomeVideo(int num){
         // 创建获取视频数据实例
         VideoService videoService = HttpUtils.getInstance().getRetrofit().create(VideoService.class);
         Call<List<VideoData>> list = videoService.getList(num);
@@ -31,7 +57,7 @@ public class DataUtils {
                 if (response.isSuccessful()) {
                     // 服务器成功通信返回,初始化主页视频数据
                     List<VideoData> videoDataList = response.body();
-                    new ShortPlayFragment().initVideoData(videoDataList);
+                    HomeFragment.initHomeVideo(videoDataList);
                 }
             }
 
