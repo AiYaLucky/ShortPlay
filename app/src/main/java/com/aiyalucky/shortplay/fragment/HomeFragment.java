@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.aiyalucky.shortplay.R;
+import com.aiyalucky.shortplay.https.DataUtils;
 import com.aiyalucky.shortplay.pojo.VideoData;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
@@ -32,7 +33,7 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         player = rootView.findViewById(R.id.video_player);
-        player.setUp(homeVideoList.get(0).getVideourl(), true, homeVideoList.get(0).getName());
+        player.setUp(DataUtils.baseUrl + homeVideoList.get(0).getVideourl(), true, homeVideoList.get(0).getName());
         player.setSeekOnStart(currentPositionWhenPlaying);
         player.setAutoFullWithSize(true);
         player.setRotateViewAuto(true);// 自动旋转屏幕

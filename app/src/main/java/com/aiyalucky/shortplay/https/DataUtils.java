@@ -18,6 +18,7 @@ import retrofit2.Response;
  */
 public class DataUtils {
 
+    public final static String baseUrl = "http://aiyalucky.f3322.net/";
     /**
      * 从服务器获取视频数据
      * @param num 获取的条数
