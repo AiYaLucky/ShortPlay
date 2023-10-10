@@ -3,10 +3,37 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="60dp"
         tools:context=".fragment.TaskCenterFragment">
+    <!--  顶部返回按钮  -->
+    <LinearLayout
+            android:id="@+id/top_back"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal">
 
+<!--        &lt;!&ndash; 返回箭头 &ndash;&gt;-->
+<!--        <ImageView-->
+<!--                android:id="@+id/back_arr"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/left_arrow" />-->
+
+        <!-- TextView居中 -->
+        <TextView
+                android:id="@+id/model_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/task_center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_weight="1" />
+    </LinearLayout>
     <!-- 看点和钱包信息 -->
     <androidx.cardview.widget.CardView
             android:id="@+id/info_layout"
@@ -15,6 +42,7 @@
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
             app:cardBackgroundColor="@color/task_button_purple"
+            android:layout_below="@+id/top_back"
             app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -100,18 +128,18 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!--  任务中心文本  -->
-    <TextView
-            android:id="@+id/task_center_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_below="@id/info_layout"
-            android:text="@string/task_center"
-        android:background="@drawable/background_border"/>
+    <!--    &lt;!&ndash;  任务中心文本  &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--            android:id="@+id/task_center_text"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:gravity="center"-->
+    <!--            android:textStyle="bold"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="20sp"-->
+    <!--            android:layout_below="@id/info_layout"-->
+    <!--            android:text="@string/task_center"-->
+    <!--        android:background="@drawable/background_border"/>-->
 
     <!-- 任务中心列表 -->
     <androidx.cardview.widget.CardView
@@ -121,7 +149,7 @@
             app:cardCornerRadius="7dp"
             app:cardElevation="5dp"
             android:layout_marginBottom="2dp"
-            android:layout_below="@id/task_center_text"
+            android:layout_below="@id/info_layout"
             app:cardUseCompatPadding="true">
 
         <!-- 任务信息 -->
