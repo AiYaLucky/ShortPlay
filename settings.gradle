@@ -1,5 +1,7 @@
 pluginManagement {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -8,10 +10,17 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven { url 'https://jitpack.io' }
-        maven { url "https://maven.aliyun.com/repository/public" }
+        flatDir {
+            dirs 'app/libs'
+        }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
         google()
         mavenCentral()
+        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+
     }
 }
 rootProject.name = "ShortPlay"

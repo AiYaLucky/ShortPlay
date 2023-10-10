@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        tools:context=".fragment.FeedBackFragment">
+
+    <TextView
+            android:id="@+id/record_title"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="反馈与投诉"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/black" />
+
+    <EditText
+            android:id="@+id/feedback_description"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:background="@drawable/edittext_border"
+            android:hint="请输入反馈内容" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/submit_button"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_bg_sure"
+                android:text="提 交" />
+
+        <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/button_bg_cancel"
+                android:text="取 消" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="联系方式"
+                android:gravity="left"
+                android:textSize="22sp"
+                android:textColor="@color/black" />
+    </LinearLayout>
+</LinearLayout>

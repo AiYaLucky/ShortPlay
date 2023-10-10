@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">onlineVideo</string>
+    <string name="suggestion">推荐</string>
+    <string name="video">短剧</string>
+    <string name="news">资讯</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="categoryName">类别名称</string>
+    <string name="videoName">视频名称</string>
+    <string name="hotVideos">热门推荐</string>
+</resources>

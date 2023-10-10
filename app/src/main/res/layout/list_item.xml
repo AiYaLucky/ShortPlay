@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/category_item_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        tools:context=".adapter.ShowListAdapter">
+
+    <!-- 视频封面布局 -->
+    <FrameLayout
+            android:id="@+id/video_item_image_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <!--  视频封面  -->
+        <ImageView
+                android:id="@+id/video_item_image"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="match_parent" />
+
+        <!--  集数文本  -->
+        <TextView
+                android:id="@+id/video_item_text"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:textColor="#000000"
+                android:background="#B3FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:letterSpacing="0.2"
+                android:text="第X集"
+                tools:ignore="SmallSp" />
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,129 @@
+{
+  "aa": "586c524558565a4e4352775a556c5a4e556c4666514178635677385752784241575635545741345752524a585231494d52305a4755773d3d",
+  "ab": 1,
+  "ac": "5546706247467463536b64585268314e57313165566b424258454257",
+  "ad": {
+    "ah_plans": [
+      {
+        "device_plans": "vbi",
+        "device_requirements": [
+          {
+            "allow_version_range": "13314-40000",
+            "package_names": "com.vivo.browser"
+          }
+        ],
+        "device_rom": "vivo",
+        "min_os_api": "25",
+        "type": "plan_g"
+      },
+      {
+        "device_plans": "o3",
+        "device_requirements": [
+          {
+            "allow_version_range": "7002016-8010000",
+            "package_names": "com.oppo.filemanager,com.coloros.filemanager"
+          }
+        ],
+        "device_rom": "oppo",
+        "min_os_api": "29",
+        "type": "plan_f"
+      },
+      {
+        "device_plans": "o2,o1",
+        "device_requirements": [
+          {
+            "allow_version_range": "310-7002038",
+            "package_names": "com.oppo.filemanager,com.coloros.filemanager"
+          },
+          {
+            "package_names": "com.android.packageinstaller",
+            "version_block": [
+              "123_123"
+            ]
+          }
+        ],
+        "device_rom": "oppo",
+        "type": "plan_a"
+      },
+      {
+        "device_plans": "v1,v2",
+        "device_requirements": [
+          {
+            "package_names": "com.android.filemanager",
+            "version_block": [
+              "123_123"
+            ]
+          },
+          {
+            "package_names": "com.android.packageinstaller",
+            "version_block": [
+              "123_123"
+            ]
+          }
+        ],
+        "device_rom": "vivo",
+        "type": "plan_a"
+      }
+    ],
+    "ah_report_config": [
+      "com.android.filemanager",
+      "com.android.packageinstaller",
+      "com.coloros.filemanager",
+      "com.oppo.filemanager",
+      "com.vivo.browser"
+    ],
+    "download_dir": {
+      "dir_name": "安装\"%s\""
+    },
+    "external_storage_permission_path_type": 1,
+    "need_head_connection": 0
+  },
+  "ae": "46555a43543139634467493d",
+  "af": "5546425855464150416749414241734a436c6f4755673d3d",
+  "ak": "58455647575231515855645457456358556c7448576c78624858523665484e726533427966334a735948317a5a413d3d",
+  "al": "5a337869656e593d",
+  "am": "646d316963324633636e396a5a486f3d",
+  "am_plans": [
+    {
+      "type": "am_0"
+    },
+    {
+      "type": "am_2"
+    },
+    {
+      "device_requirements": [
+        {
+          "allow_version_range": "70200-90000",
+          "package_names": "market"
+        }
+      ],
+      "type": "am_3"
+    }
+  ],
+  "an": "634852696333523259577070596d707064685148",
+  "ao": "594752364767493d",
+  "az": "586e64585256593d",
+  "ba": "586e645852565a70556c42645631526366566c6556673d3d",
+  "bb": "5555645a5155426351554e5856566859564630665546785948564e645545526258314559526c4a5158565652566c396651454253576c395251513d3d",
+  "bc": "576c74435531314e556c42435831785848316c6456304661576c5964585668415531744347464a51516c315a585268346657646e6433393462475279645868346358453d",
+  "bd": "576c74435531314e56314a4356773d3d",
+  "be": "525678415756464c5845524655304544484264525156784351466442476b426451466f595656786547565a4558454643566b5a53526b4d4c",
+  "bf": "556c745352467851567831665745646358557764556c4242576c3164476d42396332493d",
+  "bugfix": {
+    "default": 1
+  },
+  "download_exp_switch_temp": 1073724923,
+  "enable_open_app_dialog": 1,
+  "install_queue_enable": 0,
+  "kllk": "oppo",
+  "kllk_need_rename_apk": 1,
+  "q": "5546706247463563576b6c4447465656536c565748564a4651314657576b4a52524274335831646664567462586c6c66594646425146705856673d3d",
+  "r": "5546706247463563576b6c4447465656536c565748564a4651314657576b4a52524274585831646647483133576c4a646346746557317861594646425146706155773d3d",
+  "s": "3566393366393833353234646566336463613436343436396432636639663365",
+  "t": "5546706247463563576b6c4447465656536c565748564a4651314657576b4a525242745858316466474831315846746358467077563139595556565158513d3d",
+  "u": "5546706247463563576b6c444746354b5231644256673d3d",
+  "upload_secret_key": "596f823f283d4af73ead3ea6",
+  "v": "534264665745424e556c3961596b704a56686f4a4168385851314e5158316454553374585731595244425954514251644555645858575652515564615756313657564257454177434267594143515947487846415545464758316c64656c78585578514a4355343d",
+  "w": "5546706247464a585630465a5831635855466c66566c3152556b413d",
+  "x": "57304643526b414448427858526b4e4b48566451566c4a62566c78555856685247465a5a577878535255515a526b4a44"
+}

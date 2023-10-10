@@ -1,0 +1,249 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/main_activity_marginBottom"
+        android:orientation="vertical">
+
+    <!-- 视频赛选选项 -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <!-- 第一行 -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp">
+
+            <TextView
+                    android:id="@+id/tv_comprehensive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="综合排序"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+            <TextView
+                    android:id="@+id/tv_most_followed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最多追剧"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_most_played"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最多播放"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_most_liked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最多点赞"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_recent_updates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最近更新"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <!-- 第二行 -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp">
+
+            <TextView
+                    android:id="@+id/tv_all_styles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部风格"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+            <TextView
+                    android:id="@+id/tv_campus_story"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="校园故事"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_underdog_revival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="屌丝逆袭"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_crossing_story"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="穿越故事"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_jianghu_anecdote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="江湖轶事"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+        <!-- 第二行换行补充 -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp">
+
+            <TextView
+                    android:id="@+id/tv_comedy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="搞笑喜剧"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_fantasy_epic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="玄幻史诗"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+        <!-- 第三行 -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp">
+
+            <TextView
+                    android:id="@+id/tv_completion_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="完结状态"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+            <TextView
+                    android:id="@+id/tv_finished"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已完结"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_ongoing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="连载中"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <!-- 第四行 -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp">
+
+            <TextView
+                    android:id="@+id/tv_payment_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="付费类型"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+            <TextView
+                    android:id="@+id/tv_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="免费"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_limited_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="限免"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+
+            <TextView
+                    android:id="@+id/tv_paid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="付费"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/light_gray" />
+    <!-- 筛选目标视频显示 -->
+    <GridView
+            android:id="@+id/video_sift_grid"
+            android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/good_video_start_dp"
+            android:layout_marginEnd="@dimen/good_video_end_dp"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+</LinearLayout>

@@ -1,1 +1,3 @@
-# ShortPlay
+# onlineVideo_server
+
+android端app配套的服务端

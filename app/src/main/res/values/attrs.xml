@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+        <attr name="progressForegroundColor" format="color" />
+        <attr name="progressWidth" format="dimension" />
+        <attr name="progressBackgroundColor" format="color" />
+    </declare-styleable>
+</resources>

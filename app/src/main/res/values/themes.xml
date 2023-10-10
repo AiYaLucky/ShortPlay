@@ -1,16 +1,42 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.ShortPlay" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+<resources>
+    <!-- 基础应用主题 -->
+    <style name="Theme.OnlineVideo" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- 主色调 -->
+        <item name="colorPrimary">#80FFFFFF</item>
+        <!-- 主色调变种 -->
+        <item name="colorPrimaryVariant">@color/main_menu_bg_color</item>
+        <!-- 主色调上的文本颜色 -->
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+        <!-- 次要色调 -->
         <item name="colorSecondary">@color/teal_200</item>
+        <!-- 次要色调变种 -->
         <item name="colorSecondaryVariant">@color/teal_700</item>
+        <!-- 次要色调上的文本颜色 -->
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- 状态栏颜色 -->
+        <item name="android:statusBarColor">@color/main_menu_bg_color</item>
+        <!-- 在这里自定义你的主题 -->
     </style>
+
+    <!-- 用于全屏容器的主题覆盖 -->
+    <style name="ThemeOverlay.OnlineVideo.FullscreenContainer" parent="">
+        <!-- 全屏背景颜色 -->
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <!-- 全屏文本颜色 -->
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+
+    <!-- 无标题栏的应用主题 -->
+    <style name="Theme.OnlineVideo.NoActionBar">
+        <!-- 禁用窗口标题栏 -->
+        <item name="windowActionBar">false</item>
+        <!-- 禁用窗口标题 -->
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- 应用主题中的AppBar覆盖 -->
+    <style name="Theme.OnlineVideo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- 应用主题中的弹出覆盖 -->
+    <style name="Theme.OnlineVideo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        tools:context=".activity.UserRecordActivity">
+
+    <TextView
+            android:id="@+id/guid_new_user_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="新 人 攻 略"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/black"/>
+    <!-- 如何免费看视频 -->
+    <androidx.cardview.widget.CardView
+            android:id="@+id/guide_look_free_video"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/task_button_purple"
+            app:cardUseCompatPadding="true"/>
+
+    <!-- 等级有什么用 -->
+    <androidx.cardview.widget.CardView
+            android:id="@+id/guide_level_useful"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/task_button_purple"
+            app:cardUseCompatPadding="true"/>
+    <!-- 其他教程 -->
+    <androidx.cardview.widget.CardView
+            android:id="@+id/guide_other_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/task_button_purple"
+            app:cardUseCompatPadding="true">
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

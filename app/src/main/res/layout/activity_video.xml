@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_detail_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!--  选集菜单  -->
+    <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/video_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <FrameLayout
+            android:id="@+id/button_container_frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/black_border">
+
+        <RelativeLayout
+                android:id="@+id/button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#A6FFFFFF">
+
+            <TextView
+                    android:id="@+id/show_list_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selectVideos"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_centerInParent="true" />
+
+            <!--  右侧上下箭头  -->
+            <ImageView
+                    android:id="@+id/arrow_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <!--  选集界面列表  -->
+    <LinearLayout
+            android:id="@+id/show_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_above="@id/button_container_frameLayout">
+
+        <LinearLayout
+                android:id="@+id/show_list_close_click_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+
+        <GridView
+                android:id="@+id/list_grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:background="#A6FFFFFF"
+                android:visibility="gone" />
+    </LinearLayout>
+    <!--  红包倒计时  -->
+    <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="200dp">
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/video_red_bag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cpb_background_progressbar_color="#928F8F8F"
+                app:cpb_background_progressbar_width="5dp"
+                app:cpb_progress_direction="to_right"
+                app:cpb_progressbar_color="#CF0000"
+                app:cpb_progressbar_width="5dp"
+                app:cpb_round_border="false" />
+
+        <ImageView
+                android:id="@+id/video_red_bag_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/red_envelope" />
+    </FrameLayout>
+
+    <!--  右侧列表按钮  -->
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="170dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/like_video"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/like_video" />
+
+        <ImageView
+                android:id="@+id/catch_video"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/collection_video" />
+
+        <ImageView
+                android:id="@+id/share_video"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/share_video" />
+    </LinearLayout>
+
+</RelativeLayout>

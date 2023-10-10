@@ -1,44 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="140dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
 
-    <!-- 视频封面图 -->
+    <!-- 视频封面 -->
     <ImageView
-            android:id="@+id/cover"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo" />
-
-    <!-- 视频标题 -->
+            android:id="@+id/video_item_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp" />
+    <!-- 视频名称 -->
     <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:id="@+id/video_item_name"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:text="@string/videoName"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/video_item_image"
+            android:textStyle="bold" />
 
-    <!-- 视频描述 -->
-    <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-    <!-- 视频作者 -->
-    <TextView
-            android:id="@+id/author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-</LinearLayout>
+</RelativeLayout>

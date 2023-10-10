@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        tools:context=".activity.UserRecordActivity">
+
+    <TextView
+            android:id="@+id/record_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="记录信息"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/black"/>
+
+    <!-- 记录信息界面 -->
+    <androidx.cardview.widget.CardView
+            android:id="@+id/record_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true">
+        <!-- 记录信息 -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/record_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:scrollbars="none" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

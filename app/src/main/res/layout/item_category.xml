@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/category_item_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        tools:context=".adapter.ItemsAdapter">
+
+    <!-- 视频封面布局 -->
+    <FrameLayout
+            android:id="@+id/video_item_image_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <!--  视频封面  -->
+        <ImageView
+                android:id="@+id/video_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        <!--  追剧标签  -->
+        <ImageView
+                android:id="@+id/video_is_catch"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/video_catch"
+                tools:ignore="RtlHardcoded" />
+
+        <!--  进度文本  -->
+        <TextView
+                android:id="@+id/video_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:textColor="#FFFFFF"
+                android:background="#80000000"
+                android:textSize="10sp"
+                android:layout_gravity="bottom|end"
+                android:padding="2dp"
+                android:text="更至11集"
+                tools:ignore="SmallSp" />
+    </FrameLayout>
+    <!-- 视频名称 -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_item_image_fragment"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <!-- 视频名称 -->
+        <TextView
+                android:id="@+id/video_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/good_video_title_height"
+                android:textSize="12sp"
+                android:text="@string/videoName"
+                android:textColor="#131313"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+
+        <!-- 视频简介 -->
+        <TextView
+                android:id="@+id/video_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/good_video_desc"
+                android:textSize="7sp"
+                android:text="剧情简介"
+                android:textColor="#5C5C5C"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

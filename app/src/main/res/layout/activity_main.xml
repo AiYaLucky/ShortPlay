@@ -1,18 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
+        android:background="@color/white">
+    <!-- 顶部菜单栏 -->
+    <LinearLayout
+            android:id="@+id/menu_top"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/main_menu_bg_color"
+            android:baselineAligned="false">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                    android:id="@+id/menu_top_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/video"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="@color/black" />
+
+            <View
+                    android:id="@+id/menu_top_video_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/menu_top_suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/suggestion"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="@color/black" />
+
+            <View
+                    android:id="@+id/menu_top_suggestion_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/menu_top_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/news"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="@color/black" />
+
+            <View
+                    android:id="@+id/menu_top_news_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Fragment的容器 -->
+    <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/main_activity_marginTop"
+            android:layout_marginBottom="0dp"/>
+
+    <!-- 底部菜单栏 -->
+    <LinearLayout
+            android:id="@+id/menu_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:background="@color/main_menu_bg_color"
+            android:baselineAligned="false">
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/menu_bottom_homePage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/homePage"
+                    android:gravity="center"
+                    android:textSize="@dimen/main_bottom_menu_text_size"
+                    android:textColor="@color/black" />
+            <View
+                    android:id="@+id/menu_bottom_homePage_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/menu_bottom_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/randomLook"
+                    android:gravity="center"
+                    android:textSize="@dimen/main_bottom_menu_text_size"
+                    android:textColor="@color/black" />
+            <View
+                    android:id="@+id/menu_bottom_random_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/menu_bottom_task_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/friends"
+                    android:gravity="center"
+                    android:textSize="@dimen/main_bottom_menu_text_size"
+                    android:textColor="@color/black" />
+            <View
+                    android:id="@+id/menu_bottom_friends_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/menu_bottom_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/mine"
+                    android:gravity="center"
+                    android:textSize="@dimen/main_bottom_menu_text_size"
+                    android:textColor="@color/black" />
+            <View
+                    android:id="@+id/menu_bottom_mine_line"
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#FF0202"
+                    android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

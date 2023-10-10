@@ -1,0 +1,18 @@
+<resources>
+      <dimen name="fab_margin">16dp</dimen>
+    <dimen name="good_video_start_dp">10dp</dimen>
+    <dimen name="good_video_end_dp">10dp</dimen>
+    <dimen name="good_video_vertical_spacing_dp">10dp</dimen>
+    <dimen name="good_video_horizontal_spacing_dp">20dp</dimen>
+    <dimen name="good_video_title_height">18dp</dimen>
+    <dimen name="good_video_desc">20dp</dimen>
+    <dimen name="main_activity_marginTop">0dp</dimen>
+    <dimen name="main_activity_marginBottom">60dp</dimen>
+    <dimen name="hot_video_marginStart">10dp</dimen>
+    <dimen name="hot_video_marginEnd">10dp</dimen>
+    <dimen name="hot_video_layout_height">200dp</dimen>
+    <dimen name="hot_video_title_height">20dp</dimen>
+    <dimen name="hot_video_desc_height">18dp</dimen>
+    <dimen name="video_sift_padding">10dp</dimen>
+    <dimen name="main_bottom_menu_text_size">24sp</dimen>
+</resources>
